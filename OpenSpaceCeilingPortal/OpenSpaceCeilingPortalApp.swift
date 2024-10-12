@@ -17,17 +17,10 @@ struct OpenSpaceCeilingPortalApp: App {
             ContentView()
                 .environment(appModel)
         }
-        .windowStyle(.volumetric)
+        .windowStyle(.plain)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            ImmersiveView()
-                .environment(appModel)
-                .onAppear {
-                    appModel.immersiveSpaceState = .open
-                }
-                .onDisappear {
-                    appModel.immersiveSpaceState = .closed
-                }
+            OuterSpaceCeilingPortalView()
         }
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
     }
